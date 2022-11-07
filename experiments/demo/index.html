@@ -44,7 +44,8 @@ function createTrials(data) {
   var current_trial=data[i]
   console.log(data[i])
 
-  var trial = {
+  if (current_trial["trial_type"]=="stat") {
+    var trial = {
   type: 'stat-learn',
   stimuli: [
   current_trial["location_top"],
@@ -54,6 +55,23 @@ function createTrials(data) {
   ],
   trial_duration: 750
  }
+
+  } else if (current_trial["trial_type"]=="response") {
+    var trial = {
+  type: 'stat-learn',
+  stimuli: [
+  current_trial["location_top"],
+  current_trial["location_right"],
+  current_trial["location_bottom"],
+  current_trial["location_left"]
+  ],
+  choices: ['ArrowDown','ArrowLeft','ArrowRight','ArrowUp'],
+  trial_duration: null,
+  response_ends_trial: true
+ }
+  }
+
+  
 
  timeline.push(trial);
 

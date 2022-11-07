@@ -51,6 +51,19 @@ jsPsych.plugins['stat-learn'] = (function() {
         default: 750,
         description: 'The maximum duration to wait for a response.'
       },
+      choices: {
+        type: jsPsych.plugins.parameterType.KEY,
+        array: true,
+        pretty_name: 'Choices',
+        default: jsPsych.NO_KEYS,
+        description: 'The keys the subject is allowed to press to respond to the stimulus.'
+      },
+      response_ends_trial: {
+        type: jsPsych.plugins.parameterType.BOOL,
+        pretty_name: 'Response ends trial',
+        default: false,
+        description: 'If true, trial will end when subject makes a response.'
+      },
     }
   }
 
@@ -59,8 +72,14 @@ jsPsych.plugins['stat-learn'] = (function() {
     // variable to keep track of timing info and responses
     var start_time = 0;
     var responses = [];
- 	 var rt = "NA";
   	var end_time = "NA";
+
+    // store response
+    var response = {
+      rt: null,
+      key: null
+    };
+
     
   var trial_data={};
 
@@ -128,12 +147,47 @@ jsPsych.plugins['stat-learn'] = (function() {
         }, trial.trial_duration);
       }
 
+      // start the response listener
+    if (trial.choices != jsPsych.NO_KEYS) {
+      var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+        callback_function: after_response,
+        valid_responses: trial.choices,
+        rt_method: 'performance',
+        persist: false,
+        allow_held_key: false
+      });
+    }
+
+
+
+      // function to handle responses by the subject
+    var after_response = function(info) {
+
+      
+      // only record the first response
+      if (response.key == null) {
+        response = info;
+      }
+
+      if (trial.response_ends_trial) {
+        endTrial();
+      }
+    };
+
 
 
     function endTrial() {
 
+
+      // kill any remaining setTimeout handlers
+      jsPsych.pluginAPI.clearAllTimeouts();
+
+      // kill keyboard listeners
+      if (typeof keyboardListener !== 'undefined') {
+        jsPsych.pluginAPI.cancelKeyboardResponse(keyboardListener);
+      }
+
     	end_time = performance.now();
-	  rt = end_time - start_time;
 		
 
       display_element.innerHTML = '';
@@ -148,7 +202,8 @@ jsPsych.plugins['stat-learn'] = (function() {
 		image2: trial.stimuli[1],
 		image3: trial.stimuli[2],
 		 image4: trial.stimuli[3],
-		rt: rt
+		rt: response.rt,
+    key: response.key
 		
 	};
 
