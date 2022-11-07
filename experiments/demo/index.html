@@ -5,6 +5,7 @@
   <script src="jspsych-6.3.1/examples/js/snap.svg-min.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
   <script src="jspsych-6.3.1/plugins/jspsych-fullscreen.js"></script>
+  <script src="papaparse.min.js"></script>
   <script src="stat-learn.js"></script>
   <link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css">
 </head>
@@ -24,13 +25,36 @@
 }
 timeline.push(enter_fullscreen)
 
- var trial_1 = {
+var csv_url = "trials.csv"
+
+Papa.parse(csv_url, {
+  download: true,
+  header: true,
+  complete: function(results) {
+    var data = results.data;
+    console.log(data);
+    startExperiment(data);
+  }
+})
+
+function createTrials(data) {
+
+  for (i=0;i<data.length;i++) {
+
+  var current_trial=trials[i]
+
+  var trial = {
   type: 'stat-learn',
-  stimuli: ["../../stimuli/shapes/1/1.jpg","../../stimuli/shapes/2/1.jpg","../../stimuli/shapes/3/1.jpg","../../stimuli/shapes/4/1.jpg"],
+  stimuli: [
+  current_trial["location_top"],
+  current_trial["location_right"],
+  current_trial["location_bottom"],
+  current_trial["location_left"]
+  ],
   trial_duration: 750
  }
 
- timeline.push(trial_1);
+ timeline.push(trial);
 
  var isi = {
   type: 'stat-learn',
@@ -39,32 +63,26 @@ timeline.push(enter_fullscreen)
  }
 
  timeline.push(isi);
+}
+}
 
- var trial_2 = {
-  type: 'stat-learn',
-  stimuli: ["../../stimuli/shapes/1/2.jpg","../../stimuli/shapes/2/2.jpg","../../stimuli/shapes/3/2.jpg","../../stimuli/shapes/4/2.jpg"],
-  trial_duration: 750
- }
 
- timeline.push(trial_2);
- timeline.push(isi);
 
- var trial_3 = {
-  type: 'stat-learn',
-  stimuli: ["../../stimuli/shapes/1/3.jpg","../../stimuli/shapes/2/3.jpg","../../stimuli/shapes/3/3.jpg","../../stimuli/shapes/4/3.jpg"],
-  trial_duration: 750
- }
 
- timeline.push(trial_3);
- timeline.push(isi);
 
+function startExperiment(data) {
+  createTrials(data);
 
   jsPsych.init({
     timeline: timeline,
-    on_finish: function() {
+    on_finish: function() { 
       jsPsych.data.displayData();
     }
+      
   });
+
+};
+
 </script>
 
 </html>
