@@ -41,7 +41,8 @@ function createTrials(data) {
 
   for (i=0;i<data.length;i++) {
 
-  var current_trial=trials[i]
+  var current_trial=data[i]
+  console.log(data[i])
 
   var trial = {
   type: 'stat-learn',
