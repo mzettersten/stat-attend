@@ -156,10 +156,30 @@ jsPsych.plugins['stat-learn'] = (function() {
         response = info;
       }
 
+      // testing response feedback
       console.log(response);
+      if (response.key == "arrowleft") {
+        rect1.attr({
+          fill: "#088F8F"
+        });
+      } else if (response.key == "arrowtop") {
+        rect2.attr({
+          fill: "#088F8F"
+        });
+      } else if (response.key == "arrowright") {
+        rect3.attr({
+          fill: "#088F8F"
+        });
+      } else if (response.key == "arrowdown") {
+        rect4.attr({
+          fill: "#088F8F"
+        });
+      }
 
       if (trial.response_ends_trial) {
-        endTrial();
+        jsPsych.pluginAPI.setTimeout(function () {
+          endTrial();
+        }, 300);
       }
     };
 
