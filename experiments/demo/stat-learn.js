@@ -160,19 +160,19 @@ jsPsych.plugins['stat-learn'] = (function() {
       console.log(response);
       if (response.key == "arrowleft") {
         rect1.attr({
-          fill: "#088F8F"
+          stroke: "#088F8F"
         });
       } else if (response.key == "arrowtop") {
         rect2.attr({
-          fill: "#088F8F"
+          stroke: "#088F8F"
         });
       } else if (response.key == "arrowright") {
         rect3.attr({
-          fill: "#088F8F"
+          stroke: "#088F8F"
         });
       } else if (response.key == "arrowdown") {
         rect4.attr({
-          fill: "#088F8F"
+          stroke: "#088F8F"
         });
       }
 
