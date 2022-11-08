@@ -1,10 +1,10 @@
 trial_num,trial_type,location_top,location_right,location_bottom,location_left
 1,stat,stimuli/shapes/1/1.jpg,stimuli/shapes/2/1.jpg,stimuli/shapes/3/1.jpg,stimuli/shapes/4/1.jpg
 2,response,stimuli/t_left.png,stimuli/t_right_upper_skew.png,stimuli/t_left_down_skew.png,stimuli/t_left_upper_skew.png
-3,stat,stimuli/shapes/1/1.jpg,stimuli/shapes/2/1.jpg,stimuli/shapes/3/1.jpg,stimuli/shapes/3/1.jpg
-4,stat,stimuli/shapes/1/2.jpg,stimuli/shapes/2/2.jpg,stimuli/shapes/3/2.jpg,stimuli/shapes/1/4.jpg
-5,stat,stimuli/shapes/1/3.jpg,stimuli/shapes/2/3.jpg,stimuli/shapes/3/3.jpg,stimuli/shapes/2/3.jpg
-6,stat,stimuli/shapes/1/4.jpg,stimuli/shapes/2/4.jpg,stimuli/shapes/3/4.jpg,stimuli/shapes/3/1.jpg
-7,stat,stimuli/shapes/1/5.jpg,stimuli/shapes/2/5.jpg,stimuli/shapes/3/5.jpg,stimuli/shapes/2/5.jpg
-8,stat,stimuli/shapes/1/1.jpg,stimuli/shapes/2/1.jpg,stimuli/shapes/3/1.jpg,stimuli/shapes/1/2.jpg
+3,stat,stimuli/shapes/1/1.jpg,stimuli/shapes/2/1.jpg,stimuli/shapes/3/1.jpg,stimuli/shapes/4/1.jpg
+4,stat,stimuli/shapes/1/2.jpg,stimuli/shapes/2/2.jpg,stimuli/shapes/3/2.jpg,stimuli/shapes/4/4.jpg
+5,stat,stimuli/shapes/1/3.jpg,stimuli/shapes/2/3.jpg,stimuli/shapes/3/3.jpg,stimuli/shapes/4/3.jpg
+6,stat,stimuli/shapes/1/4.jpg,stimuli/shapes/2/4.jpg,stimuli/shapes/3/4.jpg,stimuli/shapes/4/1.jpg
+7,stat,stimuli/shapes/1/5.jpg,stimuli/shapes/2/5.jpg,stimuli/shapes/3/5.jpg,stimuli/shapes/4/5.jpg
+8,stat,stimuli/shapes/1/1.jpg,stimuli/shapes/2/1.jpg,stimuli/shapes/3/1.jpg,stimuli/shapes/4/2.jpg
 9,response,stimuli/t_left.png,stimuli/t_right_upper_skew.png,stimuli/t_left_down_skew.png,stimuli/t_left_upper_skew.png
