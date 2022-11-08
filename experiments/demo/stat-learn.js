@@ -147,6 +147,22 @@ jsPsych.plugins['stat-learn'] = (function() {
         }, trial.trial_duration);
       }
 
+        // function to handle responses by the subject
+    var after_response = function(info) {
+
+      
+      // only record the first response
+      if (response.key == null) {
+        response = info;
+      }
+
+      console.log(response);
+
+      if (trial.response_ends_trial) {
+        endTrial();
+      }
+    };
+
       // start the response listener
     if (trial.choices != jsPsych.NO_KEYS) {
       var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
@@ -157,23 +173,6 @@ jsPsych.plugins['stat-learn'] = (function() {
         allow_held_key: false
       });
     }
-
-
-
-      // function to handle responses by the subject
-    var after_response = function(info) {
-
-      
-      // only record the first response
-      if (response.key == null) {
-        response = info;
-      }
-
-      if (trial.response_ends_trial) {
-        endTrial();
-      }
-    };
-
 
 
     function endTrial() {
