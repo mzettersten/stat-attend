@@ -41,6 +41,14 @@ function createTrials(data) {
 
   for (i=0;i<data.length;i++) {
 
+     var isi = {
+  type: 'stat-learn',
+  stimuli: ["stimuli/white_square.jpeg","stimuli/white_square.jpeg","stimuli/white_square.jpeg","stimuli/white_square.jpeg"],
+  trial_duration: 750
+ }
+
+ timeline.push(isi);
+
   var current_trial=data[i]
   console.log(data[i])
 
@@ -76,13 +84,7 @@ function createTrials(data) {
 
  timeline.push(trial);
 
- var isi = {
-  type: 'stat-learn',
-  stimuli: ["stimuli/white_square.jpeg","stimuli/white_square.jpeg","stimuli/white_square.jpeg","stimuli/white_square.jpeg"],
-  trial_duration: 750
- }
 
- timeline.push(isi);
 }
 }
 
