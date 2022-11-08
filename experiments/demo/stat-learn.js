@@ -48,7 +48,7 @@ jsPsych.plugins['stat-learn'] = (function() {
       trial_duration: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Trial duration',
-        default: 750,
+        default: null,
         description: 'The maximum duration to wait for a response.'
       },
       choices: {
