@@ -160,19 +160,23 @@ jsPsych.plugins['stat-learn'] = (function() {
       console.log(response);
       if (response.key == "arrowleft") {
         rect1.attr({
-          stroke: "#088F8F"
+          stroke: "#088F8F",
+          strokeWidth: 10
         });
       } else if (response.key == "arrowtop") {
         rect2.attr({
-          stroke: "#088F8F"
+          stroke: "#088F8F",
+          strokeWidth: 10
         });
       } else if (response.key == "arrowright") {
         rect3.attr({
-          stroke: "#088F8F"
+          stroke: "#088F8F",
+          strokeWidth: 10
         });
       } else if (response.key == "arrowdown") {
         rect4.attr({
-          stroke: "#088F8F"
+          stroke: "#088F8F",
+          strokeWidth: 10
         });
       }
 
