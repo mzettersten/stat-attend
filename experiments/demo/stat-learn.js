@@ -163,7 +163,7 @@ jsPsych.plugins['stat-learn'] = (function() {
           stroke: "#088F8F",
           strokeWidth: 10
         });
-      } else if (response.key == "arrowtop") {
+      } else if (response.key == "arrowup") {
         rect2.attr({
           stroke: "#088F8F",
           strokeWidth: 10
